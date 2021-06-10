@@ -13,6 +13,7 @@ class BurcListesi extends StatelessWidget {
           return ListTile(
             title: Text("Listenin $index . elemanı"),
             leading: Image.asset("images/akrep8.png"),
+            tileColor: Colors.black,
           );
         },
       ),
