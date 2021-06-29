@@ -2,6 +2,18 @@
 class Strings {
   static const String APP_NAME = "Burç Rehberi";
 
+  // static const List<String> YOLLAR = [
+  //   "images/koc1.png",
+  //   "images/boga2.png",
+  //   "images/ikizler3.png",
+  //   "images/yengec4.png",
+  //   "images/aslan5.png",
+  //   "images/basak6.png",
+  //   "images/terazi7.png",
+
+
+  // ];
+
   static const List<String> BURC_ADLARI = [
     "Koc",
     "Boga",

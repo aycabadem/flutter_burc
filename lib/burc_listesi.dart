@@ -1,3 +1,5 @@
+import 'package:burc_rehberi/burc_detay.dart';
+import 'package:burc_rehberi/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 class BurcListesi extends StatelessWidget {
@@ -5,15 +7,38 @@ class BurcListesi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("-Burçlar-"),
+        title: Text("Burç Rehberi"),
       ),
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: Strings.BURC_ADLARI.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text("Listenin $index . elemanı"),
-            leading: Image.asset("images/akrep8.png"),
-            tileColor: Colors.black,
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              tileColor: Colors.white,
+              title: Text(
+                "${Strings.BURC_ADLARI[index]}",
+                style: TextStyle(
+                  color: Colors.pink,
+                  fontSize: 26,
+                ),
+              ),
+              subtitle: Text(
+                "${Strings.BURC_TARIHLERI[index]}",
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+              ),
+              leading: Image.asset(
+                  "images/${(Strings.BURC_ADLARI[index]).toLowerCase()}${index + 1}.png"),
+              trailing: Icon(
+                Icons.arrow_forward_ios_sharp,
+                color: Colors.pink,
+              ),
+                onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BurcDetay(index: index,)));
+              },
+            ),
           );
         },
       ),
