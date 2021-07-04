@@ -14,30 +14,33 @@ class BurcListesi extends StatelessWidget {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListTile(
-              tileColor: Colors.white,
-              title: Text(
-                "${Strings.BURC_ADLARI[index]}",
-                style: TextStyle(
-                  color: Colors.pink,
-                  fontSize: 26,
+            child: Card(
+              elevation: 20,
+              child: ListTile(
+                tileColor: Colors.white,
+                title: Text(
+                  "${Strings.BURC_ADLARI[index]}",
+                  style: TextStyle(
+                    color: Colors.pink,
+                    fontSize: 26,
+                  ),
                 ),
+                subtitle: Text(
+                  "${Strings.BURC_TARIHLERI[index]}",
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+                leading: Image.asset(
+                    "images/${(Strings.BURC_ADLARI[index]).toLowerCase()}${index + 1}.png"),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: Colors.pink,
+                ),
+                  onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => BurcDetay(index: index,)));
+                },
               ),
-              subtitle: Text(
-                "${Strings.BURC_TARIHLERI[index]}",
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-              leading: Image.asset(
-                  "images/${(Strings.BURC_ADLARI[index]).toLowerCase()}${index + 1}.png"),
-              trailing: Icon(
-                Icons.arrow_forward_ios_sharp,
-                color: Colors.pink,
-              ),
-                onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => BurcDetay(index: index,)));
-              },
             ),
           );
         },

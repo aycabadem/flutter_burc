@@ -21,7 +21,7 @@ class BurcDetay extends StatelessWidget {
               title: Text("${Strings.BURC_ADLARI[index]} Burcu Özellikleri"),
               centerTitle: true,
               background: Image.asset(
-                "images/${(Strings.BURC_ADLARI[index]).toLowerCase()}${index + 1}.png",
+                "images/${(Strings.BURC_ADLARI[index]).toLowerCase()}_buyuk${index + 1}.png",
                 fit: BoxFit.cover,
               ),
             ),
