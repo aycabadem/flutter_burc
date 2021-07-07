@@ -1,6 +1,7 @@
 import 'package:burc_rehberi/burc_detay.dart';
 import 'package:burc_rehberi/utils/strings.dart';
 import 'package:flutter/material.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 class BurcListesi extends StatelessWidget {
   @override
@@ -27,8 +28,8 @@ class BurcListesi extends StatelessWidget {
                 ),
                 subtitle: Text(
                   "${Strings.BURC_TARIHLERI[index]}",
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
                 ),
                 leading: Image.asset(
                     "images/${(Strings.BURC_ADLARI[index]).toLowerCase()}${index + 1}.png"),
@@ -36,9 +37,22 @@ class BurcListesi extends StatelessWidget {
                   Icons.arrow_forward_ios_sharp,
                   color: Colors.pink,
                 ),
-                  onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BurcDetay(index: index,)));
+                onTap: () {
+                  PaletteGenerator paletteGenerator;
+                  Future<PaletteGenerator> fPaletGenerator =
+                      PaletteGenerator.fromImageProvider(AssetImage(
+                          "images/${(Strings.BURC_ADLARI[index]).toLowerCase()}_buyuk${index + 1}.png"));
+
+                  fPaletGenerator.then((value) {
+                    paletteGenerator = value;
+                   
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BurcDetay(
+                                  index: index, renk: paletteGenerator.dominantColor.color,
+                                )));
+                  });
                 },
               ),
             ),
